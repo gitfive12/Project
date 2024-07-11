@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration</title>
+</head>
+<body>
+    <script>
+        const url = "http://20.244.56.144/test/register";
+
+
+        const data = {
+            companyName: "Project",
+            ownerName: "H P Panchami",
+            rollNo: "R21EA076",
+            ownerEmail: "panchamihp@gmail.com",
+            accessCode: "IUZTNI"
+        };
+
+      
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+
+       
+        fetch(url, options)
+            .then(response => response.json())
+            .then(credentials => {
+                console.log('Registration successful! Save the following credentials:');
+                console.log(credentials);
+                // Save credentials to localStorage
+                localStorage.setItem('credentials', JSON.stringify(credentials));
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    </script>
+</body>
+</html>
