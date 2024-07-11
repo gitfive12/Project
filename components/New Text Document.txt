@@ -1,0 +1,36 @@
+import React, { useState, useEffect } from 'react';
+
+function AverageCalculator() {
+  const [average, setAverage] = useState(null);
+  const [numbers, setNumbers] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/numbers/p'); // Replace with desired ID
+        const data = await response.json();
+        setAverage(data.avg);
+        setNumbers(data.numbers);
+      } catch (error) {
+        console.error(error);
+        // Handle errors appropriately, e.g., display an error message
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      {/* Display the average and numbers fetched from the microservice */}
+      <p>Average: {average}</p>
+      <ul>
+        {numbers.map((number) => (
+          <li key={number}>{number}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default AverageCalculator;

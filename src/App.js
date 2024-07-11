@@ -1,5 +1,9 @@
+// src/App.js
+
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import AverageCalculator from './AverageCalculator';
 
 function App() {
   return (
@@ -18,6 +22,9 @@ function App() {
           Learn React
         </a>
       </header>
+      <main>
+        <AverageCalculator />
+      </main>
     </div>
   );
 }
